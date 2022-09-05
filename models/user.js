@@ -21,6 +21,13 @@ const userSchema = new Schema({
     trim: true,
     minLength: 3,
     required: true
+  }, 
+  zipCode : {
+    type: Number,
+    trim: true,
+    minLength: 5,
+    maxLength: 5,
+    required: true,
   }
 }, {
   timestamps: true,
