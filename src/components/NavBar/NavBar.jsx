@@ -14,6 +14,8 @@ export default function NavBar({ user, setUser }) {
       &nbsp; | &nbsp;
       <Link to='/orders/new'>My Runs</Link>
       &nbsp; | &nbsp;
+      <Link to='/locations/new'>Create a Run</Link>
+      &nbsp; | &nbsp;
       Welcome, {user.name}
       &nbsp; | &nbsp;
       <Link to='' onClick={handleLogOut}>Log Out</Link>
