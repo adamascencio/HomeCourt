@@ -28,6 +28,12 @@ const userSchema = new Schema({
     minLength: 5,
     maxLength: 5,
     required: true,
+  },
+  lat: {
+    type: Number,
+  },
+  long: {
+    type: Number,
   }
 }, {
   timestamps: true,

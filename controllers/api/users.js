@@ -1,3 +1,7 @@
+const fetch = require('node-fetch');
+
+const BASE_URL = `https://maps.googleapis.com/maps/api/geocode/json?key=${process.env.GOOGLE_API_KEY}&components=postal_code:`;
+
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcrypt');
 const User = require('../../models/user');
@@ -22,6 +26,10 @@ async function login(req, res) {
 
 async function create(req, res) {
   try {
+    const response = await fetch(`${BASE_URL}${req.body.zipCode}`);
+    const data = await response.json();
+    req.body.lat = data.results[0].geometry.location.lat;
+    req.body.long = data.results[0].geometry.location.lng;
     const user = await User.create(req.body);
     // token is a string
     const token = createJWT(user);

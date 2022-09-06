@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { Routes, Route } from 'react-router-dom';
 import { getUser } from '../../utilities/users-service';
+import { getLatLong } from '../../utilities/google-api';
 import AuthPage from '../AuthPage/AuthPage';
 import CreateRunPage from '../CreateRunPage/CreateRunPage';
 import NewOrderPage from '../NewOrderPage/NewOrderPage';
@@ -10,6 +11,7 @@ import './App.css';
 
 export default function App() {
   const [user, setUser] = useState(getUser());
+  console.log(user);
 
   return (
     <main className="App">
