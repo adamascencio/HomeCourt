@@ -1,7 +1,6 @@
 import { useState } from 'react';
 import { Routes, Route } from 'react-router-dom';
 import { getUser } from '../../utilities/users-service';
-import { getLatLong } from '../../utilities/google-api';
 import AuthPage from '../AuthPage/AuthPage';
 import CreateRunPage from '../CreateRunPage/CreateRunPage';
 import NewOrderPage from '../NewOrderPage/NewOrderPage';
