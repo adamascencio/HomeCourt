@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import Map from '../../components/Map/Map';
 import "./CreateRunPage.css";
 
 export default function CreateRunPage({ user }) {
@@ -38,6 +39,7 @@ export default function CreateRunPage({ user }) {
           onChange={handleChange} 
           id="location" 
         />
+        <Map user={user} />
         <button type="submit">Submit</button>
       </form>
     </main>

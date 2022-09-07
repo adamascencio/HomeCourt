@@ -7,6 +7,8 @@
   width: 70vw;
   max-width: 600px;
   margin: 0 auto;
+  align-content: center;
+  justify-content: center;
 }
 
 .s2 {

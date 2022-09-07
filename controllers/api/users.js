@@ -1,6 +1,6 @@
 const fetch = require('node-fetch');
 
-const BASE_URL = `https://maps.googleapis.com/maps/api/geocode/json?key=${process.env.GOOGLE_API_KEY}&components=postal_code:`;
+const BASE_URL = `https://maps.googleapis.com/maps/api/geocode/json?key=${process.env.REACT_APP_GOOGLE_API_KEY}&components=postal_code:`;
 
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcrypt');
