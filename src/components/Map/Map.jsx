@@ -22,7 +22,7 @@ export default function Map({ user }) {
         }
       );
       
-      new window.google.maps.Marker({ position: defaultProps.center, map: map });
+      new window.google.maps.Marker({ position: defaultProps.center, map });
 
       // get nearby basketball courts
       const request = {
@@ -40,11 +40,11 @@ export default function Map({ user }) {
         return new window.google.maps.Marker({
           position: { lat: place.geometry.location.lat(), lng: place.geometry.location.lng() },
           map,
-          title: place.name
+          title: place.name,
         });
       });
     }
-  }, []);
+  });
 
   function callback(results, status) {
     if (status === window.google.maps.places.PlacesServiceStatus.OK) {
