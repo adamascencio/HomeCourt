@@ -1,15 +1,29 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
-// TODO - complete the run schema
 const runSchema = new Schema({
-  time: {},
-  date: {},
+  time: {
+    type: Number,
+    enum: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12],
+    required: true,
+  },
+  amPm: {
+    type: String,
+    enum: ['AM', 'PM'],
+  },
+  date: {
+    type: Date,
+    required: true
+  },
   playerCount: {
     type: Number,
-    default: 1
+    default: 0
   },
-  user: {
+  players: [{
+    type: Schema.Types.ObjectId,
+    ref: 'User'
+  }],
+  creator: {
     type: Schema.Types.ObjectId,
     ref: 'User'
   }
@@ -42,8 +56,37 @@ const locationSchema = new Schema({
     type: String,
     default: undefined
   },
-  schedule: {},
-  timeSlots: {},
+  timeSlots: {
+    date: {type: Date},
+    amTimeSlots: {
+      12: { type: Boolean, default: true },
+      1: { type: Boolean, default: true },
+      2: { type: Boolean, default: true },
+      3: { type: Boolean, default: true },
+      4: { type: Boolean, default: true},
+      5: { type: Boolean, default: true},
+      6: { type: Boolean, default: true},
+      7: { type: Boolean, default: true},
+      8: { type: Boolean, default: true},
+      9: { type: Boolean, default: true},
+      10: { type: Boolean, default: true},
+      11: { type: Boolean, default: true}
+    }, 
+    pmTimeSlots: {
+      12: { type: Boolean, default: true },
+      1: { type: Boolean, default: true },
+      2: { type: Boolean, default: true },
+      3: { type: Boolean, default: true },
+      4: { type: Boolean, default: true},
+      5: { type: Boolean, default: true},
+      6: { type: Boolean, default: true},
+      7: { type: Boolean, default: true},
+      8: { type: Boolean, default: true},
+      9: { type: Boolean, default: true},
+      10: { type: Boolean, default: true},
+      11: { type: Boolean, default: true}
+    }
+  },
   runs: [runSchema]
 }, {
   timestamps: true
