@@ -1,6 +1,8 @@
 import { useState } from 'react';
-import Map from '../../components/Map/Map';
 import * as locationsAPI from '../../utilities/locations-api';
+import RunCreateForm from '../../components/RunCreateForm/RunCreateForm';
+import GoogleLocationSelectForm from '../../components/GoogleLocationSelectForm/GoogleLocationSelectForm';
+import UserCreateLocationForm from '../../components/UserCreateLocationForm/UserCreateLocationForm';
 import "./CreateRunPage.css";
 
 export default function CreateRunPage({ user }) {
@@ -15,20 +17,16 @@ export default function CreateRunPage({ user }) {
     zipCode: '',
     googleId: undefined
   });
-  let nearbyCourtOptions = nearbyLocations.map(place => {
-    return <option onClick={() => setLocation(place)} key={place.place_id} value={place.place_id}>{place.name} - {place.formatted_address}</option>
-  });
 
   // Event Handlers
+
+  function handleDropdownChange(evt) {
+    setLocation(evt.target.value);
+  }
 
   function handleChange(evt) {
     const newAppData = {...formData, [evt.target.name]: evt.target.value};
     setFormData(newAppData);
-    console.log(formData);
-  }
-
-  function handleDropdownChange(evt) {
-    setLocation(evt.target.value);
   }
 
   function handleAddLocation(evt) {
@@ -43,7 +41,6 @@ export default function CreateRunPage({ user }) {
         zipCode: selectedCourt.formatted_address.split(',')[2].split(' ')[2],
         googleId: selectedCourt.place_id
       };
-      console.log('location data: ', locationData);
       locationsAPI.addLocation(locationData);
     } else {
       locationsAPI.addLocation(formData);
@@ -61,62 +58,16 @@ export default function CreateRunPage({ user }) {
   return (
     <main>
       <h1>Create Run</h1>
-      <button onClick={() => setShowDropdown(!showDropdown)}>{showDropdown ? 'Enter New Location' : 'Choose a Local Location'}</button>
-      {showDropdown ? 
-        <form onSubmit={handleAddLocation} className='form-grid'>
-          <h2 className="s2">Pick a Location</h2>
-          <Map user={user} nearbyLocations={nearbyLocations} setNearbyLocations={setNearbyLocations}  />
-          <select className="s2" name="googleId" onChange={handleDropdownChange} required>
-            <option value="">-- Select a Location --</option>
-            {nearbyCourtOptions}
-          </select>
-          <button type='submit'>Submit</button>
-        </form>
-        : 
-        <form onSubmit={handleAddLocation} className='form-grid'>
-          <h2 className="s2">Create a Location</h2>
-          <label>Court Name: </label>
-          <input 
-            type='text'
-            name='name'
-            value={formData.name}
-            onChange={handleChange}
-            required
-          />
-          <label>Address: </label>
-          <input 
-            type='text'
-            name='address'
-            value={formData.address}
-            onChange={handleChange}
-            required
-          />
-          <label>City: </label>
-          <input 
-            type='text'
-            name='city'
-            value={formData.city}
-            onChange={handleChange}
-            required
-          />
-          <label>State: </label>
-          <input 
-            type='text'
-            name='state'
-            value={formData.state}
-            onChange={handleChange}
-            required
-          />
-          <label>Zip Code: </label>
-          <input 
-            type='number'
-            name='zipCode'
-            value={formData.zipCode}
-            onChange={handleChange}
-            required
-          />
-          <button type="submit">Submit</button>
-        </form>
+      {location ? 
+        <RunCreateForm />
+        :
+        <>
+          {showDropdown ? 
+            <GoogleLocationSelectForm user={user} nearbyLocations={nearbyLocations} setNearbyLocations={setNearbyLocations} showDropdown={showDropdown} setShowDropdown={setShowDropdown} handleDropdownChange={handleDropdownChange} handleAddLocation={handleAddLocation} />
+            : 
+            <UserCreateLocationForm handleAddLocation={handleAddLocation} showDropdown={showDropdown} setShowDropdown={setShowDropdown} handleChange={handleChange} formData={formData} />
+          }
+        </>
       }
     </main>
   );
