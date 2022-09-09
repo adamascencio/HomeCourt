@@ -1,5 +1,8 @@
 const express = require('express');
 const router = express.Router();
-const locationCtrl = require('../../controllers/api/locations');
+const locationsCtrl = require('../../controllers/api/locations');
+
+// POST /api/locations
+router.post('/', locationsCtrl.create);
 
 module.exports = router;

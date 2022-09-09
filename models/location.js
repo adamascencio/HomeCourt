@@ -5,7 +5,16 @@ const Schema = mongoose.Schema;
 const runSchema = new Schema({
   time: {},
   date: {},
-  players: {}
+  playerCount: {
+    type: Number,
+    default: 1
+  },
+  user: {
+    type: Schema.Types.ObjectId,
+    ref: 'User'
+  }
+}, {
+  timestamps: true
 });
 
 const locationSchema = new Schema({
@@ -25,9 +34,19 @@ const locationSchema = new Schema({
     type: String,
     required: true
   },
+  zipCode: {
+    type: String,
+    required: true
+  }, 
+  googleId: {
+    type: String,
+    default: undefined
+  },
   schedule: {},
   timeSlots: {},
   runs: [runSchema]
+}, {
+  timestamps: true
 });
 
 module.exports = mongoose.model('Location', locationSchema);

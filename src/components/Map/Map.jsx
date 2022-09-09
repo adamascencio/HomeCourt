@@ -1,15 +1,14 @@
-import { useState, useEffect, useRef } from "react";
+import { useEffect, useRef } from "react";
 // import LocationPin from "../LocationPin/LocationPin";
 
-export default function Map({ user }) {
+export default function Map({ user, nearbyLocations, setNearbyLocations }) {
   const defaultProps = {
     center: {
       lat: user.lat,
       lng: user.long
     },
-    zoom: 11
+    zoom: 10
   };
-  const [nearbyLocations, setNearbyLocations] = useState([]);
   const mapDiv = useRef();
 
   useEffect(function() {
@@ -21,8 +20,6 @@ export default function Map({ user }) {
           center: defaultProps.center,
         }
       );
-      
-      new window.google.maps.Marker({ position: defaultProps.center, map });
 
       // get nearby basketball courts
       const request = {
@@ -49,16 +46,9 @@ export default function Map({ user }) {
   function callback(results, status) {
     if (status === window.google.maps.places.PlacesServiceStatus.OK) {
       setNearbyLocations(results);
-      console.log('results: ', results);
       console.log('nearby courts', nearbyLocations);
-      console.log('status: ', status);
     }
   }
 
-
-  return (
-    <div className="s2" style={{ height: '40vh', width: '100%' }} ref={mapDiv}>
-  
-    </div>
-    );
+  return <div className='s2' style={{ height: '40vh', width: '100%' }} ref={mapDiv}></div>;
 }
