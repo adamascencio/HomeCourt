@@ -24,6 +24,7 @@ export default function CreateRunPage({ user }) {
   function handleChange(evt) {
     const newAppData = {...formData, [evt.target.name]: evt.target.value};
     setFormData(newAppData);
+    console.log(formData);
   }
 
   function handleDropdownChange(evt) {
@@ -34,21 +35,19 @@ export default function CreateRunPage({ user }) {
     evt.preventDefault();
     if (showDropdown) {
       const selectedCourt = nearbyLocations.find(place => place.place_id === location);
-      console.log('selected court: ', selectedCourt);
-      setFormData({
+      const locationData = {
         name: selectedCourt.name,
         address: selectedCourt.formatted_address,
         city: selectedCourt.formatted_address.split(',')[1],
         state: selectedCourt.formatted_address.split(',')[2].split(' ')[1],
         zipCode: selectedCourt.formatted_address.split(',')[2].split(' ')[2],
         googleId: selectedCourt.place_id
-      });
-      console.log('form data: ', formData);
-      locationsAPI.addLocation(formData);
+      };
+      console.log('location data: ', locationData);
+      locationsAPI.addLocation(locationData);
     } else {
       locationsAPI.addLocation(formData);
     }
-    console.log('Post Request: ', formData);
     setFormData({
       name: '',
       address: '',
@@ -110,7 +109,7 @@ export default function CreateRunPage({ user }) {
           />
           <label>Zip Code: </label>
           <input 
-            type='text'
+            type='number'
             name='zipCode'
             value={formData.zipCode}
             onChange={handleChange}
