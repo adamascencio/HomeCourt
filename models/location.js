@@ -17,7 +17,7 @@ const runSchema = new Schema({
   },
   playerCount: {
     type: Number,
-    default: 0
+    default: 1
   },
   players: [{
     type: Schema.Types.ObjectId,
@@ -57,35 +57,38 @@ const locationSchema = new Schema({
     default: undefined
   },
   timeSlots: {
-    date: {type: Date},
-    amTimeSlots: {
-      12: { type: Boolean, default: true },
-      1: { type: Boolean, default: true },
-      2: { type: Boolean, default: true },
-      3: { type: Boolean, default: true },
-      4: { type: Boolean, default: true},
-      5: { type: Boolean, default: true},
-      6: { type: Boolean, default: true},
-      7: { type: Boolean, default: true},
-      8: { type: Boolean, default: true},
-      9: { type: Boolean, default: true},
-      10: { type: Boolean, default: true},
-      11: { type: Boolean, default: true}
-    }, 
-    pmTimeSlots: {
-      12: { type: Boolean, default: true },
-      1: { type: Boolean, default: true },
-      2: { type: Boolean, default: true },
-      3: { type: Boolean, default: true },
-      4: { type: Boolean, default: true},
-      5: { type: Boolean, default: true},
-      6: { type: Boolean, default: true},
-      7: { type: Boolean, default: true},
-      8: { type: Boolean, default: true},
-      9: { type: Boolean, default: true},
-      10: { type: Boolean, default: true},
-      11: { type: Boolean, default: true}
-    }
+    date: {
+      type: Date,
+      default: new Date()
+    },
+    amTimeSlots: [
+      {type: Boolean, default: false },
+      {type: Boolean, default: false },
+      {type: Boolean, default: false },
+      {type: Boolean, default: false },
+      {type: Boolean, default: false },
+      {type: Boolean, default: false },
+      {type: Boolean, default: false },
+      {type: Boolean, default: false },
+      {type: Boolean, default: false },
+      {type: Boolean, default: false },
+      {type: Boolean, default: false },
+      {type: Boolean, default: false },
+    ], 
+    pmTimeSlots: [
+      {type: Boolean, default: false },
+      {type: Boolean, default: false },
+      {type: Boolean, default: false },
+      {type: Boolean, default: false },
+      {type: Boolean, default: false },
+      {type: Boolean, default: false },
+      {type: Boolean, default: false },
+      {type: Boolean, default: false },
+      {type: Boolean, default: false },
+      {type: Boolean, default: false },
+      {type: Boolean, default: false },
+      {type: Boolean, default: false },
+    ]
   },
   runs: [runSchema]
 }, {

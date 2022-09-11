@@ -46,7 +46,6 @@ export default function Map({ user, nearbyLocations, setNearbyLocations }) {
   function callback(results, status) {
     if (status === window.google.maps.places.PlacesServiceStatus.OK) {
       setNearbyLocations(results);
-      console.log('nearby courts', nearbyLocations);
     }
   }
 

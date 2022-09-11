@@ -7,3 +7,7 @@ const BASE_URL = '/api/locations';
 export function addLocation(location) {
   return sendRequest(BASE_URL, 'POST', location);
 }
+
+export function addRun(runData, placeId) {
+  return sendRequest(`${BASE_URL}/runs`, 'POST', {runData, placeId});
+}
