@@ -15,10 +15,6 @@ const runSchema = new Schema({
     type: Date,
     required: true
   },
-  playerCount: {
-    type: Number,
-    default: 1
-  },
   players: [{
     type: Schema.Types.ObjectId,
     ref: 'User'
@@ -29,6 +25,11 @@ const runSchema = new Schema({
   }
 }, {
   timestamps: true
+});
+
+const availabilitySchema = new Schema({
+  date: Date,
+  hoursAvail: [Number]
 });
 
 const locationSchema = new Schema({
@@ -56,40 +57,7 @@ const locationSchema = new Schema({
     type: String,
     default: undefined
   },
-  timeSlots: {
-    date: {
-      type: Date,
-      default: new Date()
-    },
-    amTimeSlots: [
-      {type: Boolean, default: false },
-      {type: Boolean, default: false },
-      {type: Boolean, default: false },
-      {type: Boolean, default: false },
-      {type: Boolean, default: false },
-      {type: Boolean, default: false },
-      {type: Boolean, default: false },
-      {type: Boolean, default: false },
-      {type: Boolean, default: false },
-      {type: Boolean, default: false },
-      {type: Boolean, default: false },
-      {type: Boolean, default: false },
-    ], 
-    pmTimeSlots: [
-      {type: Boolean, default: false },
-      {type: Boolean, default: false },
-      {type: Boolean, default: false },
-      {type: Boolean, default: false },
-      {type: Boolean, default: false },
-      {type: Boolean, default: false },
-      {type: Boolean, default: false },
-      {type: Boolean, default: false },
-      {type: Boolean, default: false },
-      {type: Boolean, default: false },
-      {type: Boolean, default: false },
-      {type: Boolean, default: false },
-    ]
-  },
+  schedule: [availabilitySchema],
   runs: [runSchema]
 }, {
   timestamps: true

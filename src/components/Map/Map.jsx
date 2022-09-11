@@ -1,5 +1,4 @@
 import { useEffect, useRef } from "react";
-// import LocationPin from "../LocationPin/LocationPin";
 
 export default function Map({ user, nearbyLocations, setNearbyLocations }) {
   const defaultProps = {

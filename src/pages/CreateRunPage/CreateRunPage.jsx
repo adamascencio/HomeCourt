@@ -4,7 +4,7 @@ import RunCreateForm from '../../components/RunCreateForm/RunCreateForm';
 import GoogleLocationSelectForm from '../../components/GoogleLocationSelectForm/GoogleLocationSelectForm';
 import "./CreateRunPage.css";
 
-export default function CreateRunPage({ user }) {
+export default function CreateRunPage({ user, todayStr }) {
   const [nearbyLocations, setNearbyLocations] = useState([]);
   const [optionTagId, setOptionTagId] = useState(null);
   const [modelLocation, setModelLocation] = useState(null);
@@ -34,7 +34,7 @@ export default function CreateRunPage({ user }) {
     <main>
       <h1>Create Run</h1>
       {modelLocation ? 
-        <RunCreateForm modelLocation={modelLocation} nearbyLocations={nearbyLocations} />
+        <RunCreateForm modelLocation={modelLocation} nearbyLocations={nearbyLocations} todayStr={todayStr} />
         :
         <GoogleLocationSelectForm user={user} nearbyLocations={nearbyLocations} setNearbyLocations={setNearbyLocations} setOptionTagId={setOptionTagId} handleDropdownChange={handleDropdownChange} handleAddLocation={handleAddLocation} />
       }

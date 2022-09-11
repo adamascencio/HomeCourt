@@ -1,22 +1,28 @@
 import { useState } from 'react';
-import * as locationsAPI from '../../utilities/locations-api';
+import * as runsAPI from '../../utilities/runs-api';
 import './RunCreateForm.css';
 
-export default function RunCreateForm({ modelLocation, nearbyLocations }) {
-  const month = ('0' + (new Date().getMonth()+1)).slice(-2);
-  const day = ('0' + new Date().getDate()).slice(-2);
-  const year = new Date().getFullYear();
-  const today = `${year}-${month}-${day}`;
+export default function RunCreateForm({ modelLocation, nearbyLocations, todayStr }) {
   const selectedCourt = nearbyLocations.find(place => place.place_id === modelLocation.googleId);
   console.log(selectedCourt);
   const selectedCourtImage = getGooglePhotoSrc(selectedCourt);
-  const filteredTimes = modelLocation.timeSlots.amTimeSlots
   const [formData, setFormData] = useState({
-    date: today,
+    date: todayStr,
     time: '12', 
     amPm: 'AM'
   });
   console.log(formData);
+  const TIMES = [
+    0, 1, 2, 3, 4, 5, 6, 7, 
+    8, 9, 10, 11, 12, 13, 14, 15, 
+    16, 17, 18, 19, 20, 21, 22, 23
+  ];
+  const runSchedule = {
+    schedule: {
+      date: new Date(formData.date),
+      hoursAvail: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23]
+    }
+  }
 
   function getGooglePhotoSrc(court) {
     return court.photos ? court.photos[0].getUrl({maxWidth: 400, maxHeight: 400}) : '';
@@ -30,16 +36,15 @@ export default function RunCreateForm({ modelLocation, nearbyLocations }) {
   }
   
   function handleRadioBtnClick(evt) {
-    console.log('evt: ', evt.target.value)
     const newRunData = {...formData, [evt.target.name]: evt.target.id};
     setFormData(newRunData);
   }
 
   async function handleSubmitRun(evt) {
     evt.preventDefault();
-    await locationsAPI.addRun(formData, modelLocation._id);
+    await runsAPI.addRun(formData, modelLocation._id);
     setFormData({
-      date: today,
+      date: todayStr,
       time: '12',
       amPm: 'AM'
     })
@@ -56,7 +61,7 @@ export default function RunCreateForm({ modelLocation, nearbyLocations }) {
         }
         <form onSubmit={handleSubmitRun}>
           <label>Date:</label>
-          <input value={formData.date} onChange={handleChange} type="date" min={today} name="date" required />
+          <input value={formData.date} onChange={handleChange} type="date" min={todayStr} name="date" required />
           <label>Time:</label>
           <select value={formData.time} onChange={handleChange} name="time" required>
             <option value='12'>12:00-1:00</option>
