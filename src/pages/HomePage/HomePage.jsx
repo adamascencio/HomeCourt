@@ -16,7 +16,7 @@ export default function HomePage({ user }) {
       runData.current = runs;
     }
     getNonUserRuns();
-  }, []);
+  }, [runData]);
 
   function calcDistance(userLat, userLong, placeLat, placeLong) {
       const R = 3958.8; // Radius of the Earth in miles

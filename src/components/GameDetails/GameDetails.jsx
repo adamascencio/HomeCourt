@@ -5,7 +5,11 @@ export default function GameCard({ game, locationId, user }) {
   const gameDate = new Date(game.date).toLocaleDateString();
 
   async function joinGame() {
-    await runsAPI.joinRun(locationId, game._id);
+    await runsAPI.joinRun(game._id);
+  }
+
+  async function deleteRun() {
+    await runsAPI.deleteRun(game._id);
   }
   
   return (
@@ -25,7 +29,7 @@ export default function GameCard({ game, locationId, user }) {
           <td>{game.amPm}</td>
           <td>{game.players.length}</td>
           {game.creator === user._id ? 
-            <button className='blue-bg btn btn-primary'>Edit</button> 
+            <button onClick={deleteRun} className='btn btn-danger red-bg'>Delete</button> 
             : 
             <button onClick={joinGame} className='blue-bg btn btn-primary'>Join</button>}
         </tr>

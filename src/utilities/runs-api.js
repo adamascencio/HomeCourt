@@ -16,6 +16,10 @@ export function getLocalRuns() {
   return sendRequest(`${BASE_URL}/local`);
 }
 
-export function joinRun(locationId, runId) {
-  return sendRequest(`${BASE_URL}/join`, 'PUT', {locationId, runId});
+export function joinRun(runId) {
+  return sendRequest(`${BASE_URL}/join`, 'PUT', {runId});
+}
+
+export function deleteRun(runId) {
+  return sendRequest(`${BASE_URL}/delete`, 'DELETE', {runId});
 }

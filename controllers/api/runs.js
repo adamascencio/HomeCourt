@@ -5,6 +5,7 @@ module.exports = {
   getUserRuns,
   getAllRuns,
   joinRun,
+  deleteRun,
 }
 
 async function createRun(req, res) {
@@ -41,6 +42,14 @@ async function joinRun(req, res) {
   console.log('run to join: ', runToJoin);
   runToJoin.players.push(req.user._id);
   console.log('joined run: ', runToJoin);
+  await run.save();
+  res.json(run);
+}
+
+async function deleteRun(req, res) {
+  const run = await Location.findOne({'runs._id': req.body.runId});
+  const runToDelete = run.runs.find(run => run._id == req.body.runId);
+  run.runs.remove(runToDelete);
   await run.save();
   res.json(run);
 }
