@@ -1,8 +1,8 @@
 import GameDetails from '../GameDetails/GameDetails';
 
-export default function RunCard({ run }) {
+export default function RunCard({ run, user }) {
   const gameDetails = run.runs.map(game => {
-    return <GameDetails key={game._id} game={game} />
+    return <GameDetails key={game._id} game={game} locationId={run._id} user={user} />
   });
   return (
     <div className='card'>

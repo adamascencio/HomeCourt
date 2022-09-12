@@ -3,17 +3,20 @@ import * as runsAPI from '../../utilities/runs-api';
 import RunCard from '../../components/RunCard/RunCard';
 
 export default function HomePage({ user }) {
-  const runData = useRef();
-  const [searchRadius, setSearchRadius] = useState(15);
+  const runData = useRef([]);
+  const [localRuns, setLocalRuns] = useState([]);
+  const [searchRadius, setSearchRadius] = useState(1000);
+  const runCards = localRuns.map(run => {
+    return <RunCard key={run._id} run={run} user={user} />
+  });
 
   useEffect(function() {
     async function getNonUserRuns() {
       const runs = await runsAPI.getLocalRuns();
       runData.current = runs;
-      console.log('runData: ', runs);
     }
     getNonUserRuns();
-  });
+  }, []);
 
   function calcDistance(userLat, userLong, placeLat, placeLong) {
       const R = 3958.8; // Radius of the Earth in miles
@@ -26,27 +29,28 @@ export default function HomePage({ user }) {
       return d;
     }
 
-  function showRunsInSearchRadius(searchRadius) {
+  function findRunsInSearchRadius(searchRadius) {
     const runs = [];
-    if (runs.length > 0) {
+    console.log('runData: ', runData.current);
+    if (runData.current.length > 0) {
       runData.current.forEach(run => {
-        const runDistance = calcDistance(user.lat, user.long, run.lat, run.long);
+        let runDistance = calcDistance(user.lat, user.long, run.lat, run.long);
         if (runDistance <= searchRadius) {
           runs.push(run);
+          console.log('find runs: ', runs);
         }
       });
-      runs.map(run => {
-        return <RunCard key={run._id} run={run} />
-      });
-    } else {
-      return <p>No runs in your area</p>
     }
+    setLocalRuns(runs); 
   }
 
   return (
     <>
       <h1>HomePage</h1>
-      {showRunsInSearchRadius(searchRadius)}
+      <div className="MyRunsPage">
+        {runCards}
+      </div>
+      <button onClick={() => findRunsInSearchRadius(searchRadius)}>Find Local Runs</button> 
     </>
   );
 }

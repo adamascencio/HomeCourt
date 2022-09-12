@@ -1,6 +1,12 @@
-export default function GameCard({ game }) {
+import * as runsAPI from '../../utilities/runs-api';
+import './GameDetails.css';
+
+export default function GameCard({ game, locationId, user }) {
   const gameDate = new Date(game.date).toLocaleDateString();
-  const playerCount = game.players.length > 1 ? `${game.players.length} players` : `${game.players.length} player`;
+
+  async function joinGame() {
+    await runsAPI.joinRun(locationId, game._id);
+  }
   
   return (
     <table className="table table-hover">
@@ -8,16 +14,20 @@ export default function GameCard({ game }) {
         <tr>
           <th scope="col">Date</th>
           <th scope="col">Time</th>
+          <th scope="col">AM/PM</th>
           <th scope="col">Players Attending</th>
-          <th scope="col"></th>
         </tr>
       </thead>
       <tbody>
         <tr>
           <td>{gameDate}</td>
           <td>{game.time}</td>
-          <td>{playerCount}</td>
-          <button className='btn btn-primary'>Edit</button>
+          <td>{game.amPm}</td>
+          <td>{game.players.length}</td>
+          {game.creator === user._id ? 
+            <button className='blue-bg btn btn-primary'>Edit</button> 
+            : 
+            <button onClick={joinGame} className='blue-bg btn btn-primary'>Join</button>}
         </tr>
       </tbody>
     </table>

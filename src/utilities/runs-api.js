@@ -12,6 +12,10 @@ export function getUserRuns() {
   return sendRequest(BASE_URL);
 }
 
-export function getLocalRuns(zipCode) {
+export function getLocalRuns() {
   return sendRequest(`${BASE_URL}/local`);
+}
+
+export function joinRun(locationId, runId) {
+  return sendRequest(`${BASE_URL}/join`, 'PUT', {locationId, runId});
 }

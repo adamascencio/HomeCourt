@@ -6,7 +6,7 @@ import './MyRunsPage.css';
 export default function MyRunsPage({ user }) {
   const [runs, setRuns] = useState([]);
   const runCards = runs.map((run, idx) => {
-   return <RunCard key={run._id} run={run} />
+   return <RunCard key={run._id} run={run} user={user} />
   });
 
   useEffect(function() {
