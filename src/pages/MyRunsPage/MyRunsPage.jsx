@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import * as runsAPI from "../../utilities/runs-api";
 import RunCard from "../../components/RunCard/RunCard";
+import './MyRunsPage.css';
 
 export default function MyRunsPage({ user }) {
   const [runs, setRuns] = useState([]);
@@ -19,7 +20,9 @@ export default function MyRunsPage({ user }) {
   return (
     <>
       <h1>My Runs</h1>
-      {runCards}
+      <div className="MyRunsPage">
+        {runCards}
+      </div>
     </>
   );
 }

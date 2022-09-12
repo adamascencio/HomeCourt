@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { useNavigate } from "react-router-dom";
 import * as runsAPI from '../../utilities/runs-api';
 import './RunCreateForm.css';
 
@@ -11,6 +12,7 @@ export default function RunCreateForm({ modelLocation, nearbyLocations, todayStr
     time: '12', 
     amPm: 'AM'
   });
+  let navigate = useNavigate();
   console.log(formData);
   const TIMES = [
     0, 1, 2, 3, 4, 5, 6, 7, 
@@ -48,6 +50,7 @@ export default function RunCreateForm({ modelLocation, nearbyLocations, todayStr
       time: '12',
       amPm: 'AM'
     })
+    navigate('/runs');
   }
 
   return (

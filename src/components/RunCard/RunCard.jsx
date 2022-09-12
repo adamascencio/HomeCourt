@@ -5,10 +5,12 @@ export default function RunCard({ run }) {
     return <GameDetails key={game._id} game={game} />
   });
   return (
-    <div>
-      <h3>{run.name}</h3>
-      <p>{run.address}</p>
-      {gameDetails}
+    <div className='card'>
+      <div className='card-body'>
+        <h3>{run.name}</h3>
+        <p>{run.address}</p>
+        {gameDetails}
+      </div>
     </div>
   );
 }
