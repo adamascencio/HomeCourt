@@ -57,6 +57,12 @@ const locationSchema = new Schema({
     type: String,
     default: undefined
   },
+  lat: {
+    type: Number,
+  },
+  long: {
+    type: Number,
+  },
   schedule: [availabilitySchema],
   runs: [runSchema]
 }, {

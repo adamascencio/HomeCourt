@@ -3,6 +3,7 @@ const Location = require('../../models/location');
 module.exports = {
   createRun, 
   getUserRuns,
+  getNonUserRuns,
 }
 
 async function createRun(req, res) {
@@ -23,4 +24,10 @@ async function getUserRuns(req, res) {
   const userRuns = await Location.find({'runs.creator': req.user._id});
   console.log('userRuns: ', userRuns);
   res.json(userRuns);
+}
+
+async function getNonUserRuns(req, res) {
+  const nonUserRuns = await Location.find({'runs.creator': {$ne: req.user._id}});
+  console.log('test: ', nonUserRuns);
+  res.json(nonUserRuns);
 }

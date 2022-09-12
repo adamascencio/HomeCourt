@@ -24,7 +24,9 @@ export default function CreateRunPage({ user, todayStr }) {
       city: selectedCourt.formatted_address.split(',')[1],
       state: selectedCourt.formatted_address.split(',')[2].split(' ')[1],
       zipCode: selectedCourt.formatted_address.split(',')[2].split(' ')[2],
-      googleId: selectedCourt.place_id
+      googleId: selectedCourt.place_id,
+      lat: selectedCourt.geometry.location.lat(),
+      long: selectedCourt.geometry.location.lng(),
     };
     const location = await locationsAPI.addLocation(locationData);
     setModelLocation(location);
