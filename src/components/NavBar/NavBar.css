@@ -1,0 +1,24 @@
+nav > a {
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+  padding-right: 5%;
+}
+
+nav > a:hover {
+  color: var(--orange);
+}
+
+nav > a:last-child {
+  padding-right: 0;
+}
+
+.flex-item {
+  margin-left: auto;
+}
+
+.navbar {
+  padding: 10px 3%;
+  justify-content: flex-start;
+  
+}

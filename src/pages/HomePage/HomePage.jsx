@@ -5,7 +5,7 @@ import RunCard from '../../components/RunCard/RunCard';
 export default function HomePage({ user }) {
   const runData = useRef([]);
   const [localRuns, setLocalRuns] = useState([]);
-  const [searchRadius, setSearchRadius] = useState(1000);
+  const [searchRadius, setSearchRadius] = useState(15);
   const runCards = localRuns.map(run => {
     return <RunCard key={run._id} run={run} user={user} />
   });
@@ -35,7 +35,7 @@ export default function HomePage({ user }) {
     if (runData.current.length > 0) {
       runData.current.forEach(run => {
         let runDistance = calcDistance(user.lat, user.long, run.lat, run.long);
-        if (runDistance <= searchRadius) {
+        if (runDistance <= searchRadius && run.runs.length > 0) {
           runs.push(run);
           console.log('find runs: ', runs);
         }
@@ -44,13 +44,18 @@ export default function HomePage({ user }) {
     setLocalRuns(runs); 
   }
 
+  function handleSearchRadiusChange(evt) {
+    setSearchRadius(evt.target.value);
+  }
+
   return (
-    <>
+    <div className='main-container'>
       <h1>HomePage</h1>
-      <div className="MyRunsPage">
+      <div className='MyRunsPage'>
         {runCards}
       </div>
-      <button onClick={() => findRunsInSearchRadius(searchRadius)}>Find Local Runs</button> 
-    </>
+      <input type="number" value={searchRadius} onChange={handleSearchRadiusChange} />
+      <button onClick={() => findRunsInSearchRadius(searchRadius)}>Find Runs (miles)</button> 
+    </div>
   );
 }

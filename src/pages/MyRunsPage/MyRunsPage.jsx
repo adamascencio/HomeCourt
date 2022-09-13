@@ -18,11 +18,11 @@ export default function MyRunsPage({ user }) {
   }, []);
 
   return (
-    <>
+    <div className="main-container">
       <h1>My Runs</h1>
       <div className="MyRunsPage">
         {runCards}
       </div>
-    </>
+    </div>
   );
 }

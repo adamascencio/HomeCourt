@@ -17,4 +17,7 @@ router.put('/join', runsCtrl.joinRun);
 // DELETE /api/runs/delete
 router.delete('/delete', runsCtrl.deleteRun);
 
+// DELETE /api/runs/leave
+router.delete('/leave', runsCtrl.leaveRun);
+
 module.exports = router;

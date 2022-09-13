@@ -20,3 +20,9 @@
   align-content: center;
   font-size: 1.5rem;
 }
+
+.login-container > h1 {
+  font-family: 'Bungee Shade', cursive;
+  transform: scale(1.5);
+  margin-bottom: 52px;
+}

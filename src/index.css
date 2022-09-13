@@ -35,7 +35,7 @@ body {
   sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: var(--tan-4);
+  background-color: var(--tan-2);
   padding: 0;
   height: 100vh;
 }
@@ -97,6 +97,10 @@ code {
   background-color: var(--tan-1);
   border: .1vmin solid var(--tan-3);
   border-radius: 1vmin;
+}
+
+.main-container {
+  padding: 4%;
 }
 
 p.error-message {

@@ -23,3 +23,7 @@ export function joinRun(runId) {
 export function deleteRun(runId) {
   return sendRequest(`${BASE_URL}/delete`, 'DELETE', {runId});
 }
+
+export function leaveRun(runId) {
+  return sendRequest(`${BASE_URL}/leave`, 'DELETE', {runId});
+}

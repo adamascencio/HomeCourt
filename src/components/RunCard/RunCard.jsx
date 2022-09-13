@@ -7,9 +7,19 @@ export default function RunCard({ run, user }) {
   return (
     <div className='card'>
       <div className='card-body'>
-        <h3>{run.name}</h3>
+        <h4>{run.name}</h4>
         <p>{run.address}</p>
-        {gameDetails}
+        <table className="table table-hover">
+          <thead>
+            <tr>
+              <th scope="col">Date</th>
+              <th scope="col">Time</th>
+              <th scope="col">AM/PM</th>
+              <th scope="col">Players Attending</th>
+            </tr>
+          </thead>
+          {gameDetails}
+        </table>
       </div>
     </div>
   );

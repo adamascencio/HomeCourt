@@ -6,6 +6,7 @@ module.exports = {
   getAllRuns,
   joinRun,
   deleteRun,
+  leaveRun
 }
 
 async function createRun(req, res) {
@@ -23,7 +24,7 @@ async function createRun(req, res) {
 }
 
 async function getUserRuns(req, res) {
-  const userRuns = await Location.find({'runs.creator': req.user._id});
+  const userRuns = await Location.find({'runs.players': req.user._id});
   console.log('userRuns: ', userRuns);
   res.json(userRuns);
 }
@@ -50,6 +51,14 @@ async function deleteRun(req, res) {
   const run = await Location.findOne({'runs._id': req.body.runId});
   const runToDelete = run.runs.find(run => run._id == req.body.runId);
   run.runs.remove(runToDelete);
+  await run.save();
+  res.json(run);
+}
+
+async function leaveRun(req, res) {
+  const run = await Location.findOne({'runs._id': req.body.runId});
+  const runToLeave = run.runs.find(run => run._id == req.body.runId);
+  runToLeave.players.remove(req.user._id);
   await run.save();
   res.json(run);
 }

@@ -33,14 +33,14 @@ export default function CreateRunPage({ user, todayStr }) {
   }
 
   return (
-    <main>
+    <div className="main-container">
       <h1>Create Run</h1>
       {modelLocation ? 
         <RunCreateForm modelLocation={modelLocation} nearbyLocations={nearbyLocations} todayStr={todayStr} />
         :
         <GoogleLocationSelectForm user={user} nearbyLocations={nearbyLocations} setNearbyLocations={setNearbyLocations} setOptionTagId={setOptionTagId} handleDropdownChange={handleDropdownChange} handleAddLocation={handleAddLocation} />
       }
-    </main>
+    </div>
   );
 }
 
