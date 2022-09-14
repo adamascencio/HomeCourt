@@ -7,7 +7,7 @@ export default function GameButtons({ game, user, setPlayerCount }) {
   async function joinGame() {
     await runsAPI.joinRun(game._id);
     setPlayerCount(game.players.length + 1);
-    // navigate('/runs');
+    navigate('/runs');
   }
 
   async function deleteRun() {
@@ -17,7 +17,6 @@ export default function GameButtons({ game, user, setPlayerCount }) {
   async function leaveGame() {
     await runsAPI.leaveRun(game._id);
     setPlayerCount(game.players.length - 1);
-    // navigate('/runs');
   }
 
   function renderButtons() {
