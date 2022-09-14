@@ -1,6 +1,7 @@
 import { useRef, useState, useEffect } from 'react';
 import * as runsAPI from '../../utilities/runs-api';
 import RunCard from '../../components/RunCard/RunCard';
+import './HomePage.css';
 
 export default function HomePage({ user }) {
   const runData = useRef([]);
@@ -49,13 +50,15 @@ export default function HomePage({ user }) {
   }
 
   return (
-    <div className='main-container'>
-      <h1>HomePage</h1>
+    <div className='image-bg-container'>
+      <h1>Find Runs</h1>
+      <div className='flex-col'>
+        <input type="number" value={searchRadius} onChange={handleSearchRadiusChange} />
+        <button onClick={() => findRunsInSearchRadius(searchRadius)}>Find Runs (miles)</button> 
+      </div>
       <div className='MyRunsPage'>
         {runCards}
       </div>
-      <input type="number" value={searchRadius} onChange={handleSearchRadiusChange} />
-      <button onClick={() => findRunsInSearchRadius(searchRadius)}>Find Runs (miles)</button> 
     </div>
   );
 }

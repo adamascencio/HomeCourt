@@ -1,4 +1,5 @@
 import Map from '../../components/Map/Map';
+import './GoogleLocationSelectForm.css';
 
 export default function GoogleLocationSelectForm({ user, nearbyLocations, setNearbyLocations, handleDropdownChange, handleAddLocation, setOptionTagId }) {
   let nearbyCourtOptions = nearbyLocations.map(place => {
@@ -7,7 +8,6 @@ export default function GoogleLocationSelectForm({ user, nearbyLocations, setNea
 
   return (
     <form onSubmit={handleAddLocation} className='form-grid'>
-      <h2 className="s2">Pick a Location</h2>
       <Map user={user} nearbyLocations={nearbyLocations} setNearbyLocations={setNearbyLocations}  />
       <select className="s2" name="googleId" onChange={handleDropdownChange} required>
         <option value="">-- Select a Location --</option>

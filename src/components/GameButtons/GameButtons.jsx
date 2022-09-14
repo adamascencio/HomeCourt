@@ -7,7 +7,7 @@ export default function GameButtons({ game, user, setPlayerCount }) {
   async function joinGame() {
     await runsAPI.joinRun(game._id);
     setPlayerCount(game.players.length + 1);
-    navigate('/runs');
+    // navigate('/runs');
   }
 
   async function deleteRun() {
@@ -17,7 +17,7 @@ export default function GameButtons({ game, user, setPlayerCount }) {
   async function leaveGame() {
     await runsAPI.leaveRun(game._id);
     setPlayerCount(game.players.length - 1);
-    navigate('/runs');
+    // navigate('/runs');
   }
 
   function renderButtons() {
@@ -28,7 +28,7 @@ export default function GameButtons({ game, user, setPlayerCount }) {
     } else {
       if (game.players.includes(user._id)) {
         return (
-          <button className="btn btn-sm btn-danger red-bg" onClick={leaveGame}>Leave</button>
+          <button className="btn btn-sm btn-info" onClick={leaveGame}>Leave</button>
         );
       } else {
         return (

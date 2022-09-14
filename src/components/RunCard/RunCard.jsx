@@ -4,11 +4,14 @@ export default function RunCard({ run, user }) {
   const gameDetails = run.runs.map(game => {
     return <GameDetails key={game._id} game={game} user={user} />
   });
+  const index = run.address.indexOf('United') - 2;
+  const formattedAddress = run.address.substring(0, index);
+
   return (
     <div className='card'>
       <div className='card-body'>
         <h4>{run.name}</h4>
-        <p>{run.address}</p>
+        <p>{formattedAddress}</p>
         <table className="table table-hover align-middle">
           <thead>
             <tr>

@@ -1,11 +1,12 @@
 .RunCreateForm {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  column-gap: 20px;
-  width: 100%;
-  height: 100%;
+  display: grid;
+  grid-template-rows: 1fr 1fr;
+  justify-items: center;
+  width: 50%;
+  height: 20vh;
+  gap: 40px;
   padding: 0 20px;
+  margin: 0 auto;
 }
 
 .flex {
@@ -13,5 +14,25 @@
 }
 
 .flex > label {
-  margin-right: 10px;
+  margin-right: 20px;
+  color: white;
+}
+
+.input-form > label {
+  color: white;
+  font-weight: bold;
+}
+
+.court-img {
+  place-self: center;
+}
+
+.ball-img {
+  width: 400px;
+  height: 400px;
+}
+
+.input-form {
+  place-self: center;
+  width: 70%;
 }

@@ -2,7 +2,7 @@ import { useState } from 'react';
 import * as locationsAPI from '../../utilities/locations-api';
 import RunCreateForm from '../../components/RunCreateForm/RunCreateForm';
 import GoogleLocationSelectForm from '../../components/GoogleLocationSelectForm/GoogleLocationSelectForm';
-import "./CreateRunPage.css";
+
 
 export default function CreateRunPage({ user, todayStr }) {
   const [nearbyLocations, setNearbyLocations] = useState([]);
@@ -33,7 +33,7 @@ export default function CreateRunPage({ user, todayStr }) {
   }
 
   return (
-    <div className="main-container">
+    <div className="image-bg-container">
       <h1>Create Run</h1>
       {modelLocation ? 
         <RunCreateForm modelLocation={modelLocation} nearbyLocations={nearbyLocations} todayStr={todayStr} />

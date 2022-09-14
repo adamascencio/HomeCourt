@@ -1,0 +1,11 @@
+.form-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 5vmin;
+  padding: 20px 4vmin;
+  width: 100%;
+  max-width: 600px;
+  margin: 50px auto;
+  align-content: center;
+  justify-content: center;
+}

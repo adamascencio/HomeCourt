@@ -2,7 +2,9 @@ nav > a {
   color: white;
   text-decoration: none;
   font-weight: bold;
-  padding-right: 5%;
+  padding-right: 7%;
+  font-family: 'Bungee Shade', cursive;
+  transform: scale(1.2);
 }
 
 nav > a:hover {

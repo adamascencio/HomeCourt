@@ -7,7 +7,7 @@ export default function AuthPage({ setUser }) {
   const [showLogin, setShowLogin] = useState(true);
   
   return (
-    <main className="full-screen-container">
+    <div className="full-screen-container">
       <div className='login-container'>
         <h1>HomeCourt</h1>
         { showLogin ?
@@ -19,6 +19,6 @@ export default function AuthPage({ setUser }) {
           {showLogin ? 'Sign Up' : 'Log In'}
         </button>
       </div>
-    </main>
+    </div>
   );
 }

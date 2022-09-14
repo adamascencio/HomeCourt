@@ -54,44 +54,42 @@ export default function RunCreateForm({ modelLocation, nearbyLocations, todayStr
   }
 
   return (
-    <>
-      <h2>Schedule Run</h2>
-      <div className="RunCreateForm">
-        {selectedCourtImage === '' ? 
-          <span></span>
-          : 
-          <img className="s2" src={selectedCourtImage} alt={selectedCourt.name} /> 
-        }
-        <form onSubmit={handleSubmitRun}>
-          <label>Date:</label>
-          <input value={formData.date} onChange={handleChange} type="date" min={todayStr} name="date" required />
-          <label>Time:</label>
-          <select value={formData.time} onChange={handleChange} name="time" required>
-            <option value='12'>12:00-1:00</option>
-            <option value='1'>1:00-2:00</option>
-            <option value='2'>2:00-3:00</option>
-            <option value='3'>3:00-4:00</option>
-            <option value='4'>4:00-5:00</option>
-            <option value='5'>5:00-6:00</option>
-            <option value='6'>6:00-7:00</option>
-            <option value='7'>7:00-8:00</option>
-            <option value='8'>8:00-9:00</option>
-            <option value='9'>9:00-10:00</option>
-            <option value='10'>10:00-11:00</option>
-            <option value='11'>11:00-12:00</option>
-          </select>
-          <div></div>
-          <div className="flex">
-            <label>
-              <input value={formData.amPm} onClick={handleRadioBtnClick} type="radio" defaultChecked name="amPm" id="AM" required />AM
-            </label>
-            <label>
-              <input value={formData.amPm} onClick={handleRadioBtnClick} type="radio" name="amPm" id="PM" required />PM 
-            </label>
-          </div>
-          <button className='s2'>Submit</button>
-        </form>
-      </div>
-    </>
+    <div className="RunCreateForm">
+      {selectedCourtImage === '' ? 
+        <img className="ball-img" src="https://i.imgur.com/eyRmRVy.jpg" alt="basketball" />
+        : 
+        <img className="court-img" src={selectedCourtImage} alt={selectedCourt.name} /> 
+      }
+      <form className="input-form" onSubmit={handleSubmitRun}>
+        <label>Date:</label>
+        <input value={formData.date} onChange={handleChange} type="date" min={todayStr} name="date" required />
+        <label>Time:</label>
+        <select value={formData.time} onChange={handleChange} name="time" required>
+          <option value='12'>12:00-1:00</option>
+          <option value='1'>1:00-2:00</option>
+          <option value='2'>2:00-3:00</option>
+          <option value='3'>3:00-4:00</option>
+          <option value='4'>4:00-5:00</option>
+          <option value='5'>5:00-6:00</option>
+          <option value='6'>6:00-7:00</option>
+          <option value='7'>7:00-8:00</option>
+          <option value='8'>8:00-9:00</option>
+          <option value='9'>9:00-10:00</option>
+          <option value='10'>10:00-11:00</option>
+          <option value='11'>11:00-12:00</option>
+        </select>
+        <div></div>
+        <div className="flex">
+          <label>
+            <input value={formData.amPm} onClick={handleRadioBtnClick} type="radio" defaultChecked name="amPm" id="AM" required />AM
+          </label>
+          <label>
+            <input value={formData.amPm} onClick={handleRadioBtnClick} type="radio" name="amPm" id="PM" required />PM 
+          </label>
+        </div>
+        <span></span>
+        <button>Submit</button>
+      </form>
+    </div>
   );
 }
