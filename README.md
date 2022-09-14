@@ -2,8 +2,10 @@
 HomeCourt is an app for basektball fanatics looking to get extra practice time in. It allows users to search for nearby pickup games and join them. Users can also create their own games at basketball courts near them. 
 
 # Screenshots
-### Login/Signup 
+### Login
 ![Login](screenshots/login-form.png)
+
+### Signup 
 ![Sign Up](screenshots/signup-form.png)
 
 ### Homepage
@@ -21,12 +23,12 @@ HomeCourt is an app for basektball fanatics looking to get extra practice time i
 - CSS
 - JavaScript
 - Bootstrap
-- Node.js
-- Express.js
 - MongoDB
-- Mongoose
+- Express.js
+- React.js
+- Node.js
 - Google Maps API
-- Google Maps Places Library
+- Google Places Library
 - Token Authentication
 
 # Getting Started
