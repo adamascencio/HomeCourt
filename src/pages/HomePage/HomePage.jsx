@@ -1,23 +1,12 @@
-import { useRef, useState, useEffect } from 'react';
-import * as runsAPI from '../../utilities/runs-api';
+import { useState} from 'react';
 import RunCard from '../../components/RunCard/RunCard';
 import './HomePage.css';
 
-export default function HomePage({ user }) {
-  const runData = useRef([]);
-  const [localRuns, setLocalRuns] = useState([]);
+export default function HomePage({ user, runData, setRunData, localRuns, setLocalRuns }) {
   const [searchRadius, setSearchRadius] = useState(15);
   const runCards = localRuns.map(run => {
-    return <RunCard key={run._id} run={run} user={user} />
+    return <RunCard key={run._id} run={run} user={user} runData={runData} setRunData={setRunData} setLocalRuns={setLocalRuns}/>
   });
-
-  useEffect(function() {
-    async function getNonUserRuns() {
-      const runs = await runsAPI.getLocalRuns();
-      runData.current = runs;
-    }
-    getNonUserRuns();
-  }, [runData]);
 
   function calcDistance(userLat, userLong, placeLat, placeLong) {
       const R = 3958.8; // Radius of the Earth in miles
@@ -32,13 +21,11 @@ export default function HomePage({ user }) {
 
   function findRunsInSearchRadius(searchRadius) {
     const runs = [];
-    console.log('runData: ', runData.current);
-    if (runData.current.length > 0) {
-      runData.current.forEach(run => {
+    if (runData.length > 0) {
+      runData.forEach(run => {
         let runDistance = calcDistance(user.lat, user.long, run.lat, run.long);
         if (runDistance <= searchRadius && run.runs.length > 0) {
           runs.push(run);
-          console.log('find runs: ', runs);
         }
       });
     }

@@ -39,6 +39,7 @@ async function joinRun(req, res) {
   runToJoin.players.push(req.user._id);
   await run.save();
   res.json(run);
+  console.log(run);
 }
 
 async function deleteRun(req, res) {

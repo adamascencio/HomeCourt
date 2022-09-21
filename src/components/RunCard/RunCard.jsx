@@ -1,8 +1,8 @@
 import GameDetails from '../GameDetails/GameDetails';
 
-export default function RunCard({ run, user }) {
+export default function RunCard({ run, user, runData, setRunData, userRuns, setUserRuns}) {
   const gameDetails = run.runs.map(game => {
-    return <GameDetails key={game._id} game={game} user={user} />
+    return <GameDetails key={game._id} game={game} user={user} runData={runData} setRunData={setRunData} userRuns={userRuns} setUserRuns={setUserRuns} />
   });
   const index = run.address.indexOf('United') - 2;
   const formattedAddress = run.address.substring(0, index);

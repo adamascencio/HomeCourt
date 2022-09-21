@@ -12,8 +12,8 @@ export function getUserRuns() {
   return sendRequest(BASE_URL);
 }
 
-export function getLocalRuns() {
-  return sendRequest(`${BASE_URL}/local`);
+export function getAllRuns() {
+  return sendRequest(`${BASE_URL}/all`);
 }
 
 export function joinRun(runId) {

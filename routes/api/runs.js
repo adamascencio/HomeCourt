@@ -6,7 +6,7 @@ const runsCtrl = require('../../controllers/api/runs');
 router.get('/', runsCtrl.getUserRuns);
 
 // GET /api/runs/local
-router.get('/local', runsCtrl.getAllRuns);
+router.get('/all', runsCtrl.getAllRuns);
 
 // POST /api/runs/new
 router.post('/new', runsCtrl.createRun);
