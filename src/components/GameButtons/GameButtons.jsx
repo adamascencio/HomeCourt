@@ -6,13 +6,10 @@ export default function GameButtons({ game, user, runData, setRunData, userRuns,
 
   async function joinGame() {
     const joinedRun = await runsAPI.joinRun(game._id);
-    console.log('runData: ', runData)
     const removeUpdatedLocation = runData.filter(run => run._id !== joinedRun._id);
     const updatedRunData = [...removeUpdatedLocation, joinedRun];
     setRunData(updatedRunData);
-    console.log(updatedRunData)
-    // const newUserRunsData = [...userRuns, joinedRun];
-    // setUserRuns(newUserRunsData);
+    navigate('/runs');
   }
 
   async function deleteRun() {
@@ -25,10 +22,11 @@ export default function GameButtons({ game, user, runData, setRunData, userRuns,
 
   async function leaveGame() {
     const leftRun = await runsAPI.leaveRun(game._id);
-    runData.current = runData.current.map(run => {
+    const updatedRunData = runData.map(run => {
       if (run._id === leftRun._id) return leftRun;
       return run;
     });
+    setRunData(updatedRunData);
     const newUserRunsData = userRuns.filter(run => run._id !== leftRun._id);
     setUserRuns(newUserRunsData);
   }

@@ -43,7 +43,7 @@ export default function App() {
           <NavBar user={user} setUser={setUser} />
           <Routes>
             {/* Route components in here */}
-            <Route path='/' element={<HomePage user={user} runData={runData} setRunData={setRunData} localRuns={localRuns} setLocalRuns={setLocalRuns} />} />
+            <Route path='/' element={<HomePage user={user} runData={runData} setRunData={setRunData} localRuns={localRuns} setLocalRuns={setLocalRuns} userRuns={userRuns} setUserRuns={setUserRuns} />} />
             <Route path='/runs' element={<MyRunsPage user={user} runData={runData} setRunData={setRunData} userRuns={userRuns} setUserRuns={setUserRuns} />} />
             <Route path='/locations/new' element={<CreateRunPage user={user} todayStr={todayStr} />} />
           </Routes>

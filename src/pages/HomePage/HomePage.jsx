@@ -2,10 +2,10 @@ import { useState} from 'react';
 import RunCard from '../../components/RunCard/RunCard';
 import './HomePage.css';
 
-export default function HomePage({ user, runData, setRunData, localRuns, setLocalRuns }) {
+export default function HomePage({ user, runData, setRunData, localRuns, setLocalRuns, userRuns, setUserRuns }) {
   const [searchRadius, setSearchRadius] = useState(15);
   const runCards = localRuns.map(run => {
-    return <RunCard key={run._id} run={run} user={user} runData={runData} setRunData={setRunData} setLocalRuns={setLocalRuns}/>
+    return <RunCard key={run._id} run={run} user={user} runData={runData} setRunData={setRunData} setLocalRuns={setLocalRuns} userRuns={userRuns} setUserRuns={setUserRuns} />
   });
 
   function calcDistance(userLat, userLong, placeLat, placeLong) {

@@ -29,7 +29,7 @@ async function getUserRuns(req, res) {
 }
 
 async function getAllRuns(req, res) {
-  const allRuns = await Location.find({});
+  const allRuns = await Location.find({'runs.players': {$ne: req.user._id}});
   res.json(allRuns);
 }
 
@@ -39,7 +39,6 @@ async function joinRun(req, res) {
   runToJoin.players.push(req.user._id);
   await run.save();
   res.json(run);
-  console.log(run);
 }
 
 async function deleteRun(req, res) {
