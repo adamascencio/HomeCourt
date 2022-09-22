@@ -44,7 +44,7 @@ export default class SignUpForm extends Component {
             <label>Email</label>
             <input type="email" name="email" value={this.state.email} onChange={this.handleChange} required />
             <label>Zip Code</label>
-            <input type="number" name="zipCode" value={this.state.zipCode} onChange={this.handleChange} required />
+            <input type="text" pattern="[0-9]{5}" name="zipCode" value={this.state.zipCode} onChange={this.handleChange} required />
             <label>Password</label>
             <input type="password" name="password" value={this.state.password} onChange={this.handleChange} required />
             <label>Confirm</label>

@@ -26,6 +26,7 @@ async function login(req, res) {
 
 async function create(req, res) {
   try {
+    req.body.zipCode = parseInt(req.body.zipCode);
     const response = await fetch(`${BASE_URL}${req.body.zipCode}`);
     const data = await response.json();
     req.body.lat = data.results[0].geometry.location.lat;
