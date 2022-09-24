@@ -3,3 +3,18 @@
   grid-template-columns: repeat(3, 1fr);
   gap: 20px;
 }
+
+/* Media Query */
+@media (max-width: 1300px) {
+  .MyRunsPage {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 900px) {
+  .MyRunsPage {
+    grid-template-columns: 1fr;
+    width: 80vw;
+    margin: auto;
+  }
+}
