@@ -1,20 +1,38 @@
-import { Link } from 'react-router-dom';
+import { useState, useEffect } from 'react';
 import * as userService from '../../utilities/users-service';
-import './NavBar.css';
+import MainNav from '../MainNav/MainNav';
+import NavDropdown from '../NavDropdown/NavDropdown';
 
-export default function NavBar({ user, setUser }) {
+export default function NavBar({ setUser }) {
 
   function handleLogOut() {
     userService.logOut();
     setUser(null);
   }
 
+  function getWindowDimensions() {
+    const { innerWidth: width, innerHeight: height } = window;
+    return {
+      width,
+      height
+    };
+}
+
+  const [windowDimensions, setWindowDimensions] = useState(getWindowDimensions());
+
+  useEffect(() => {
+    function handleResize() {
+      setWindowDimensions(getWindowDimensions());
+    }
+
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
   return (
-    <nav className='navbar fixed-top bg-primary'>
-      <Link to='/'><span>Home</span></Link>
-      <Link to='/runs'>My Runs</Link>
-      <Link to='/locations/new'>Create a Run</Link>
-      <Link className='flex-item' to='' onClick={handleLogOut}>Log Out</Link>
-    </nav>
+    windowDimensions.width > 768 ? 
+      <MainNav handleLogOut={handleLogOut} /> 
+      : 
+      <NavDropdown handleLogOut={handleLogOut} />
   );
 }

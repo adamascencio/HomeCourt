@@ -25,9 +25,4 @@
   font-family: 'Bungee Shade', cursive;
   font-size: clamp(2rem, 5vw, 4rem);
   margin: 0;
-  /* align-self: center; */
-}
-
-.login-container > button {
-  /* align-self: center; */
 }

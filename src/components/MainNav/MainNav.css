@@ -4,7 +4,7 @@ nav > a {
   font-weight: bold;
   padding-right: 7%;
   font-family: 'Bungee Shade', cursive;
-  transform: scale(1.2);
+  font-size: clamp(1rem, 3vw, 1.3rem);
 }
 
 nav > a:hover {
