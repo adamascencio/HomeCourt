@@ -24,9 +24,9 @@ export default function NavDropdown({ handleLogOut }) {
       {menuBtn}
       <nav className='nav-dropdown hidden'>
         <ul>
-          <li><Link to='/'>Home</Link></li>
-          <li><Link to='/runs'>My Runs</Link></li>
-          <li><Link to='/locations/new'>Create a Run</Link></li>
+          <li><Link onClick={toggleMenu} to='/'>Home</Link></li>
+          <li><Link onClick={toggleMenu} to='/runs'>My Runs</Link></li>
+          <li><Link onClick={toggleMenu} to='/locations/new'>Create a Run</Link></li>
           <li><Link to='' onClick={handleLogOut}>Log Out</Link></li>
         </ul>
       </nav>
