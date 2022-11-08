@@ -3,7 +3,7 @@ import './MainNav.css';
 
 export default function MainNav({ handleLogOut }) {
   return (
-    <nav className='navbar fixed-top bg-primary'>
+    <nav className='navbar fixed-top'>
       <Link to='/'><span>Home</span></Link>
       <Link to='/runs'>My Runs</Link>
       <Link to='/locations/new'>Create a Run</Link>
