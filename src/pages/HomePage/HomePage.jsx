@@ -1,9 +1,19 @@
-import { useState} from 'react';
+import { useState, useEffect } from 'react';
+import * as runsAPI from '../../utilities/runs-api';
 import RunCard from '../../components/RunCard/RunCard';
 import './HomePage.css';
 
 export default function HomePage({ user, runData, setRunData, localRuns, setLocalRuns, userRuns, setUserRuns }) {
   const [searchRadius, setSearchRadius] = useState(15);
+
+  useEffect(function() {
+    async function getRuns() {
+      const runs = await runsAPI.getAllRuns();
+      setRunData(runs);
+    }
+    getRuns();
+  }, []);
+
   const runCards = localRuns.map(run => {
     return <RunCard key={run._id} run={run} user={user} runData={runData} setRunData={setRunData} setLocalRuns={setLocalRuns} userRuns={userRuns} setUserRuns={setUserRuns} />
   });

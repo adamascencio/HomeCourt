@@ -1,7 +1,6 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { Routes, Route } from 'react-router-dom';
 import { getUser } from '../../utilities/users-service';
-import * as runsAPI from '../../utilities/runs-api';
 import AuthPage from '../AuthPage/AuthPage';
 import CreateRunPage from '../CreateRunPage/CreateRunPage';
 import HomePage from '../HomePage/HomePage';
@@ -19,22 +18,6 @@ export default function App() {
   const day = ('0' + new Date().getDate()).slice(-2);
   const year = new Date().getFullYear();
   const todayStr = `${year}-${month}-${day}`;
-
-  useEffect(function() {
-    async function getRuns() {
-      const runs = await runsAPI.getAllRuns();
-      setRunData(runs);
-    }
-    getRuns();
-  }, []);
-
-  useEffect(function() {
-    async function getUserRuns() {
-      const getRuns = await runsAPI.getUserRuns();
-      setUserRuns(getRuns);
-    }
-    getUserRuns();
-  }, [runData]);
 
   return (
     <main className="App">
