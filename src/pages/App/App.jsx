@@ -21,19 +21,19 @@ export default function App() {
   const todayStr = `${year}-${month}-${day}`;
 
   useEffect(function() {
-    async function getNonUserRuns() {
+    async function getRuns() {
       const runs = await runsAPI.getAllRuns();
       setRunData(runs);
     }
-    getNonUserRuns();
+    getRuns();
   }, []);
 
   useEffect(function() {
-    async function getRuns() {
+    async function getUserRuns() {
       const getRuns = await runsAPI.getUserRuns();
       setUserRuns(getRuns);
     }
-    getRuns();
+    getUserRuns();
   }, [runData]);
 
   return (

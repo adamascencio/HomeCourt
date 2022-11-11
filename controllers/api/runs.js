@@ -29,7 +29,7 @@ async function getUserRuns(req, res) {
 }
 
 async function getAllRuns(req, res) {
-  const allRuns = await Location.find({'runs.players': {$ne: req.user._id}});
+  const allRuns = await Location.find({});
   res.json(allRuns);
 }
 
