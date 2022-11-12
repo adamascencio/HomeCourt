@@ -14,7 +14,7 @@
 @media (max-width: 900px) {
   .MyRunsPage {
     grid-template-columns: 1fr;
-    width: 80vw;
+    width: 90vw;
     margin: auto;
   }
 }

@@ -1,4 +1,5 @@
 import GameDetails from '../GameDetails/GameDetails';
+import './RunCard.css'
 
 export default function RunCard({ run, user, runData, setRunData, userRuns, setUserRuns}) {
   const gameDetails = run.runs.map(game => {

@@ -50,7 +50,7 @@ export default function HomePage({ user, runData, setRunData, localRuns, setLoca
     <div className='image-bg-container'>
       <h1>Find Runs</h1>
       <div className='flex-col'>
-        <input type="number" value={searchRadius} onChange={handleSearchRadiusChange} />
+        <input className="fs-homepage" type="number" min={1} value={searchRadius} onChange={handleSearchRadiusChange} />
         <button onClick={() => findRunsInSearchRadius(searchRadius)}>Find Runs (miles)</button> 
       </div>
       <div className='MyRunsPage'>

@@ -12,3 +12,7 @@
 .flex-col>input[type="number"] {
   text-align: center;
 }
+
+.fs-homepage {
+  font-size: clamp(1rem, 2vw, 1.5rem);
+}
