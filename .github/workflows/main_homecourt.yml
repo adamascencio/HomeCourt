@@ -52,5 +52,5 @@ jobs:
         with:
           app-name: 'Homecourt'
           slot-name: 'Production'
-          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_F80426D6DB6A4998B63FDD6100660DFA }}
+          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_A4F7BE29E6324A5A8A4588BACE0D8F97 }}
           package: .
