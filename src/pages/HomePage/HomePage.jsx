@@ -12,6 +12,7 @@ export default function HomePage({ user, runData, setRunData, localRuns, setLoca
       setRunData(runs);
     }
     getRuns();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const runCards = localRuns.map(run => {

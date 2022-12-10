@@ -10,6 +10,7 @@ export default function MyRunsPage({ user, runData, setRunData, userRuns, setUse
       setUserRuns(getRuns);
     }
     getUserRuns();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const runCards = userRuns.map(run => {

@@ -16,7 +16,7 @@ export default function NavBar({ setUser }) {
       width,
       height
     };
-}
+  }
 
   const [windowDimensions, setWindowDimensions] = useState(getWindowDimensions());
 
