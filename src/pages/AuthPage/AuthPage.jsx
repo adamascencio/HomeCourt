@@ -9,7 +9,7 @@ export default function AuthPage({ setUser }) {
   return (
     <div className="full-screen-container">
       <div className='login-container'>
-        <h1>HomeCourt</h1>
+        <h1>HomeCourt - Change</h1>
         { showLogin ?
             <LoginForm setUser={setUser} />
             :
