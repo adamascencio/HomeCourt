@@ -5,7 +5,6 @@ import './RunCreateForm.css';
 
 export default function RunCreateForm({ modelLocation, nearbyLocations, todayStr }) {
   const selectedCourt = nearbyLocations.find(place => place.place_id === modelLocation.googleId);
-  console.log(selectedCourt);
   const selectedCourtImage = getGooglePhotoSrc(selectedCourt);
   const [formData, setFormData] = useState({
     date: todayStr,
