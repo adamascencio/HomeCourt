@@ -32,12 +32,10 @@ export default function HomePage({ user, runData, setRunData, localRuns, setLoca
 
   function findRunsInSearchRadius(searchRadius) {
     const runs = [];
-    if (runData.length > 0) {
+    if (runData.length) {
       runData.forEach(run => {
         let runDistance = calcDistance(user.lat, user.long, run.lat, run.long);
-        if (runDistance <= searchRadius && run.runs.length > 0) {
-          runs.push(run);
-        }
+        if (runDistance <= searchRadius && run.runs.length) runs.push(run); 
       });
     }
     setLocalRuns(runs); 
