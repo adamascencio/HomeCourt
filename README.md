@@ -32,7 +32,7 @@ HomeCourt is an app for basektball fanatics looking to get extra practice time i
 - Token Authentication
 
 # Getting Started
-[Click to use HomeCourt](https://home-court-cap.herokuapp.com/)
+[Click to use HomeCourt](https://homecourt.azurewebsites.net/)
 
 # Next Steps
 - Update styling to fit game cards on mobile
